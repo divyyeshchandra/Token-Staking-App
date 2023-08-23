@@ -403,7 +403,7 @@ async function stackTokenMain(_amount_wei, sClass) {
         localStorage.setItem("transaction", JSON.stringify(transactionHistory));
       }
       console.log(allUserTransaction);
-      window.location.href = "http://127.0.0.1:5500/analytic.html";
+      window.location.href = "analytic.html";
     })
     .on("transactionHash", (hash) => {
       console.log("Transaction Hash:", hash);
