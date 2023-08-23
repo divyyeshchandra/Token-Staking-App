@@ -13,10 +13,10 @@ SELECT_CONTRACT[_NETWORK_ID] = {
       address: "0x103A8d714117bF4AddDf706D9A7CdC993d1d3479",
     },
     thirtyDays: {
-      address: "address of contract...",
+      address: "0x97d10389F99172Ac066A61F7FF7e74Bd3aaC6277",
     },
-    neinetyDays: {
-      address: "address of contract...",
+    ninetyDays: {
+      address: "0xaD08eEE445bEf593bB0EFaFe64Ce92085762F0FF",
     },
     abi: [
       {

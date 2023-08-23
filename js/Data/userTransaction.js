@@ -1,8 +1,8 @@
-const userTransaction = JSON.parse(localStorage.getItem("transactions"));
+const userTransaction = JSON.parse(localStorage.getItem("transaction"));
 const user = JSON.parse(localStorage.getItem("User"));
 
 console.log(userTransaction);
-// console.log(user);
+console.log(user);
 
 function genrateCountDown() {
   var now = new Date().getDate();
@@ -65,7 +65,9 @@ const userTsansactionHistory = userTransaction.map((transaction, i) => {
         <a
             target="_blank"
             class="btn btn-bordered-white btn-smaller"
-            href="https://polygonscan.com/tx/${transaction.transactionHash}"
+            href="https://mumbai.polygonscan.com/tx/${
+              transaction.transactionHash
+            }"
         >
             Transaction
         </a>

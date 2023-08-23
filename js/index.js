@@ -4,7 +4,6 @@ connectMe("metamask_wallet");
 function connectWallet() {}
 
 function openTab(event, name) {
-  console.log(name);
   contractCall = name;
   getSeletectedTab(name);
   loadInitialData(name);
@@ -65,23 +64,47 @@ async function loadInitialData(sClass) {
         element.innerHTML = `${earlyUnstakeFee / 100}%`;
       });
 
+    if (sClass == "sevenDays") {
+      maxA = `${(10).toLocaleString()} ${
+        SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol
+      }`;
+      document
+        .querySelectorAll(".Maximum-Staking-Amount")
+        .forEach(function (element) {
+          element.innerHTML = `${maxA}`;
+        });
+    } else if (sClass == "tenDays") {
+      maxA = `${(1000).toLocaleString()} ${
+        SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol
+      }`;
+      document
+        .querySelectorAll(".Maximum-Staking-Amount")
+        .forEach(function (element) {
+          element.innerHTML = `${maxA}`;
+        });
+    } else if (sClass == "thirtyDays") {
+      maxA = `${(1000).toLocaleString()} ${
+        SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol
+      }`;
+      document
+        .querySelectorAll(".Maximum-Staking-Amount")
+        .forEach(function (element) {
+          element.innerHTML = `${maxA}`;
+        });
+    } else if (sClass == "ninetyDays") {
+      maxA = `${(1000).toLocaleString()} ${
+        SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol
+      }`;
+      document
+        .querySelectorAll(".Maximum-Staking-Amount")
+        .forEach(function (element) {
+          element.innerHTML = `${maxA}`;
+        });
+    }
+
     let minStakeAmount = await cObj.methods.getMinimumStakingAmount().call();
     minStakeAmount = Number(minStakeAmount);
     let minA;
-
-    let maxStakeAmount = await cObj.methods.getMaxStakingTokenLimit().call();
-    maxStakeAmount = Number(minStakeAmount);
-    let maxA;
-
-    if (maxStakeAmount) {
-      maxA = `${(maxStakeAmount / 10 ** 18).toLocaleString()} ${
-        SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol
-      }`;
-    } else {
-      maxA = "N/A";
-    }
-
-    console.log(maxA);
 
     if (minStakeAmount) {
       minA = `${(minStakeAmount / 10 ** 18).toLocaleString()} ${
@@ -95,12 +118,6 @@ async function loadInitialData(sClass) {
       .querySelectorAll(".Minimum-Staking-Amount")
       .forEach(function (element) {
         element.innerHTML = `${minA}`;
-      });
-
-    document
-      .querySelectorAll(".Maximum-Staking-Amount")
-      .forEach(function (element) {
-        element.innerHTML = `${maxA}`;
       });
 
     // document
@@ -189,9 +206,6 @@ async function loadInitialData(sClass) {
     });
   } catch (error) {
     console.log(error);
-    notyf.error(
-      `Unable to fetch data from ${SELECT_CONTRACT[_NETWORK_ID].network_name}!\n Please refresh this page.`
-    );
   }
 }
 
@@ -207,7 +221,7 @@ function genrateCountDown(ele, claimDate) {
     var now = new Date().getTime();
 
     //Find the distance between now and the count down date
-    var distance = (countdownDate = now);
+    var distance = countdownDate - now;
 
     //Time calculations for days, hour, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -220,7 +234,8 @@ function genrateCountDown(ele, claimDate) {
 
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    ele.innerHTML = days + "d" + hours + "h" + minutes + "m" + seconds + "s";
+    ele.innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
     if (distance < 0) {
       clearInterval(countDownGlobal);
@@ -232,12 +247,10 @@ function genrateCountDown(ele, claimDate) {
 async function connectMe(_provider) {
   try {
     let _comn_res = await commonProviderDetector(_provider);
-    console.log(_comn_res);
     if (!_comn_res) {
       console.log("Please Connect");
     } else {
       let sClass = getSeletectedTab();
-      console.log(sClass);
     }
   } catch (error) {
     notyf.error(error.message);

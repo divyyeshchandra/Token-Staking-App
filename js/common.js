@@ -36,21 +36,21 @@ async function commonInjectedConnect(_provider, _provider_name) {
   // console.log(accounts);
   currentAddress = accounts[0].toLowerCase();
   if (currentNetworkId != _NETWORK_ID) {
-    notyf.error(
-      `Please connect wallet on ${SELECT_CONTRACT[_NETWORK_ID].network_name}!`
-    );
+    // notyf.error(
+    //   `Please connect wallet on ${SELECT_CONTRACT[_NETWORK_ID].network_name}!`
+    // );
     return false;
   }
   ocontractToken = new web3.eth.Contract(
     SELECT_CONTRACT[_NETWORK_ID].TOKEN.abi,
     SELECT_CONTRACT[_NETWORK_ID].TOKEN.address
   );
+
   return true;
 }
 
 function setWeb3Events(_provider) {
   _provider.on("accountsChanged", (accounts) => {
-    console.log(accounts);
     if (!accounts.length) {
       logout();
     } else {
@@ -66,7 +66,6 @@ function setWeb3Events(_provider) {
 
   _provider.on("connect", () => {
     console.log("connect");
-    logout();
   });
 
   _provider.on("disconnect", (code, reason) => {
@@ -116,7 +115,6 @@ function formatEthErrorMsg(error) {
 }
 
 function getSeletectedTab(sClass) {
-  console.log(sClass);
   return sClass || contractCall;
 }
 

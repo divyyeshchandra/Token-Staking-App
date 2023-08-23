@@ -105,9 +105,13 @@
             </ul>
             <ul class="navbar-nav action">
               <li class="nav-item ml-2">
-                <a class="btn ml-lg auto btn-bordered-white">
-                  <i class="icon-wallet mr-md-2"></i>
-                </a>
+                <button
+                  type="button"
+                  onclick="connectMe('metamask_wallet')"
+                  class="btn ml-lg auto btn-bordered-white"
+                >
+                  <i class="icon-wallet mr-md-2"></i>Connet Wallet
+                </button>
               </li>
             </ul>
           </div>
@@ -136,6 +140,18 @@
         </div>
       </section>
       <!-- BREADCRUM SECTION END -->
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="hero-content">
+            <div class="intro text-center mb-5">
+              <h2 class="mt-5">
+                If you don't have <span class="intro-text">DBC</span> coins mail
+                at divyyesh.bvp23@gmail.com to get the coins
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- STAKING COMPONENT START -->
       <section class="staking-area">
@@ -188,9 +204,9 @@
                       role="tab"
                       aria-controls="tab-three"
                       aria-selected="false"
-                      name="thirtyTwoDays"
-                      onclick="openTab(event,'thirtyTwoDays')"
-                      >32 Days
+                      name="thirtyDays"
+                      onclick="openTab(event,'thirtyDays')"
+                      >30 Days
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
@@ -230,7 +246,7 @@
                             </li>
                             <li>
                               <strong>Eearly unstake fee:</strong>
-                              <span class="early-unstake-fee-value">30%</span>
+                              <span class="early-unstake-fee-value">0%</span>
                             </li>
                             <li>
                               <strong>Minimum staking amount:</strong
@@ -275,7 +291,7 @@
                             </li>
                             <li>
                               <strong>Eearly unstake fee:</strong>
-                              <span class="early-unstake-fee-value">30%</span>
+                              <span class="early-unstake-fee-value">0%</span>
                             </li>
                             <li>
                               <strong>Minimum staking amount:</strong
@@ -320,7 +336,7 @@
                             </li>
                             <li>
                               <strong>Eearly unstake fee:</strong>
-                              <span class="early-unstake-fee-value">30%</span>
+                              <span class="early-unstake-fee-value">0%</span>
                             </li>
                             <li>
                               <strong>Minimum staking amount:</strong
@@ -365,7 +381,7 @@
                             </li>
                             <li>
                               <strong>Eearly unstake fee:</strong>
-                              <span class="early-unstake-fee-value">30%</span>
+                              <span class="early-unstake-fee-value">0%</span>
                             </li>
                             <li>
                               <strong>Minimum staking amount:</strong
@@ -459,23 +475,23 @@
               <div class="staking-items mt-4 mt-md-0">
                 <!-- CARD -->
                 <div class="card no-hover staking-card">
-                  <h3 id="total-locked-tokens-value" class="m-0">1000 DBC</h3>
+                  <h3 id="total-locked-tokens-value" class="m-0">0 DBC</h3>
                   <p>Total Value Locked</p>
                 </div>
                 <div class="card no-hover staking-card my-4">
-                  <h3 id="total-locked-user-token" class="m-0">1000 DBC</h3>
+                  <h3 id="total-locked-user-token" class="m-0">0 DBC</h3>
                   <p>Your Lock Token</p>
                 </div>
                 <div class="card no-hover staking-card my-4">
-                  <h3 id="apy-value-feature" class="m-0">20%</h3>
+                  <h3 id="apy-value-feature" class="m-0">0%</h3>
                   <p>APY</p>
                 </div>
                 <div class="card no-hover staking-card my-4">
-                  <h3 id="num-of-stackers-value" class="m-0">34%</h3>
+                  <h3 id="num-of-stackers-value" class="m-0">0%</h3>
                   <p>Number of Stakers</p>
                 </div>
                 <div class="card no-hover staking-card my-4">
-                  <h3 id="countdown-time-value" class="m-0">3h:233</h3>
+                  <h3 id="countdown-time-value" class="m-0">0 Days</h3>
                   <span id="countdown-title-value"></span>
                   <p>Time Left, Hurry Up</p>
                 </div>
