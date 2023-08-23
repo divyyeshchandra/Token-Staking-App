@@ -1,4 +1,4 @@
-const userTransaction = JSON.parse(localStorage.getItem("transaction"));
+const userTransaction = JSON.parse(localStorage.getItem("transactions"));
 const user = JSON.parse(localStorage.getItem("User"));
 
 console.log(userTransaction);

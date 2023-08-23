@@ -353,7 +353,6 @@ async function approveTokenSpend(_mint_fee_wei, sClass) {
 async function stackTokenMain(_amount_wei, sClass) {
   let gasEstimation;
   let ocontractStacking = getContractObj(sClass);
-  console.log(ocontractStacking);
   try {
     gasEstimation = await ocontractStacking.methods
       .stake(_amount_wei)
@@ -373,7 +372,6 @@ async function stackTokenMain(_amount_wei, sClass) {
       gas: gasEstimation,
     })
     .on("receipt", (receipt) => {
-      console.log(receipt);
       const receiptObj = {
         token: _amount_wei,
         from: receipt.from,
@@ -390,9 +388,9 @@ async function stackTokenMain(_amount_wei, sClass) {
 
       let transactionHistory = [];
 
-      const allUserTransaction = localStorage.getItem("transaction");
+      const allUserTransaction = localStorage.getItem("transactions");
       if (allUserTransaction) {
-        transactionHistory = JSON.parse(localStorage.getItem("transaction"));
+        transactionHistory = JSON.parse(localStorage.getItem("transactions"));
         transactionHistory.push(receiptObj);
         localStorage.setItem(
           "transactions",
@@ -400,9 +398,11 @@ async function stackTokenMain(_amount_wei, sClass) {
         );
       } else {
         transactionHistory.push(receiptObj);
-        localStorage.setItem("transaction", JSON.stringify(transactionHistory));
+        localStorage.setItem(
+          "transactions",
+          JSON.stringify(transactionHistory)
+        );
       }
-      console.log(allUserTransaction);
       window.location.href = "analytic.html";
     })
     .on("transactionHash", (hash) => {
@@ -410,7 +410,7 @@ async function stackTokenMain(_amount_wei, sClass) {
     })
     .catch((error) => {
       console.log(error);
-      notyf.error(formatEthErrorMsg(error));
+      // notyf.error(formatEthErrorMsg(error));
       return;
     });
 }
@@ -491,9 +491,9 @@ async function unstackTokenMain(_amount_wei, ocontractStacking, sClass) {
       };
       let transactionHistory = [];
 
-      const allUserTransaction = localStorage.getItem("transaction");
+      const allUserTransaction = localStorage.getItem("transactions");
       if (allUserTransaction) {
-        transactionHistory = JSON.parse(localStorage.getItem("transaction"));
+        transactionHistory = JSON.parse(localStorage.getItem("transactions"));
         transactionHistory.push(receiptObj);
         localStorage.setItem(
           "transactions",
@@ -501,10 +501,12 @@ async function unstackTokenMain(_amount_wei, ocontractStacking, sClass) {
         );
       } else {
         transactionHistory.push(receiptObj);
-        localStorage.setItem("transaction", JSON.stringify(transactionHistory));
+        localStorage.setItem(
+          "transactions",
+          JSON.stringify(transactionHistory)
+        );
       }
-      console.log(allUserTransaction);
-      window.location.href = "http://127.0.0.1:5500/analytic.html";
+      window.location.href = "analytic.html";
     })
     .on("transactionHash", (hash) => {
       console.log("Transaction Hash:", hash);
@@ -525,8 +527,6 @@ async function claimTokens() {
       .getUserEstimatedReward()
       .call({ from: currentAddress });
     rewardBal = Number(rewardBal);
-
-    console.log("rewwardbal", rewardBal);
 
     if (!rewardBal) {
       // notyf.dismiss(notification);
@@ -577,9 +577,9 @@ async function claimTokenMain(ocontractStacking, sClass) {
       };
       let transactionHistory = [];
 
-      const allUserTransaction = localStorage.getItem("transaction");
+      const allUserTransaction = localStorage.getItem("transactions");
       if (allUserTransaction) {
-        transactionHistory = JSON.parse(localStorage.getItem("transaction"));
+        transactionHistory = JSON.parse(localStorage.getItem("transactions"));
         transactionHistory.push(receiptObj);
         localStorage.setItem(
           "transactions",
@@ -587,10 +587,12 @@ async function claimTokenMain(ocontractStacking, sClass) {
         );
       } else {
         transactionHistory.push(receiptObj);
-        localStorage.setItem("transaction", JSON.stringify(transactionHistory));
+        localStorage.setItem(
+          "transactions",
+          JSON.stringify(transactionHistory)
+        );
       }
-      console.log(allUserTransaction);
-      window.location.href = "http://127.0.0.1:5500/analytic.html";
+      window.location.href = "analytic.html";
     })
     .on("transactionHash", (hash) => {
       console.log("Transaction Hash:", hash);
